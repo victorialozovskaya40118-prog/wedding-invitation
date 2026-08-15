@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Артем & Виктория — Приглашение на свадьбу</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --pink: #F8E1E7;
+      --beige: #F5EFEB;
+      --white: #FFFFFF;
+      --blue: #A9C2D2;
+      --blue-accent: #79A3BD;
+      --text-main: #333333;
+      --text-muted: #666666;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--beige);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* Декоративные волны и акварель */
+    .bg-decor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 200px;
+      background: radial-gradient(circle, rgba(169, 194, 210, 0.25) 0%, rgba(248, 225, 231, 0.15) 70%);
+      border-radius: 40%;
+      animation: floatWave 18s infinite linear;
+    }
+
+    .wave-1 { top: -50px; left: -50%; }
+    .wave-2 { top: 400px; right: -50%; animation-duration: 22s; opacity: 0.6; }
+
+    @keyframes floatWave {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Шапка / Музыка */
+    .music-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--blue);
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Hero секция */
+    .hero {
+      text-align: center;
+      padding: 40px 10px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blue-accent);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: 400;
+      color: #2b3a42;
+      line-height: 1.1;
+      margin-bottom: 25px;
+    }
+
+    .photo-frame {
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto 30px;
+      border-radius: 180px 180px 20px 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(121, 163, 189, 0.2);
+      border: 6px solid var(--white);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Карточки */
+    .card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 30px 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      border: 1px solid rgba(248, 225, 231, 0.5);
+    }
+
+    .card h2 {
+      font-size: 30px;
+      color: #3b4d56;
+      margin-bottom: 15px;
+    }
+
+    /* Таймер */
+    .timer {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .timer-item {
+      background: var(--beige);
+      border-radius: 12px;
+      padding: 10px 12px;
+      min-width: 65px;
+    }
+
+    .timer-val {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--blue-accent);
+      display: block;
+    }
+
+    .timer-lbl {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Дресс-код Палитра */
+    .palette {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .color-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      border: 2px solid #fff;
+    }
+
+    /* Форма */
+    .form-group {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #444;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      background: #fafafa;
+    }
+
+    .form-input:focus {
+      border-color: var(--blue-accent);
+      background: #fff;
+    }
+
+    /* Чипы / Кнопки алкоголя */
+    .chips-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 10px 16px;
+      border-radius: 25px;
+      background: var(--beige);
+      border: 1px solid transparent;
+      font-size: 13px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+    }
+
+    .chip.selected {
+      background: var(--pink);
+      border-color: #e5a3b5;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(229, 163, 181, 0.3);
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .radio-btn {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      background: var(--beige);
+      cursor: pointer;
+      font-size: 13px;
+      border: 1px solid transparent;
+      transition: 0.2s;
+    }
+
+    .radio-btn.selected {
+      background: var(--blue);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--blue-accent);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(121, 163, 189, 0.4);
+      transition: background 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #638fa9;
+    }
+
+    .btn-map {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 20px;
+      background: var(--pink);
+      color: #333;
+      text-decoration: none;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .status-msg {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #2e7d32;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Аудио плеер -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-113528.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="music-btn" onclick="toggleMusic()">
+    <span id="musicIcon">🎵</span> <span id="musicText">Музыка</span>
+  </button>
+
+  <div class="bg-decor">
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+  </div>
+
+  <div class="container">
+    
+    <!-- Главный экран -->
+    <section class="hero">
+      <p class="hero-subtitle">Приглашение на свадьбу</p>
+      <h1 class="hero-title">Артем & Виктория<br><span style="font-size: 28px;">Сербуловы</span></h1>
+      
+      <div class="photo-frame">
+        <img src="549208AC-5975-48B9-8563-68F3831E93F2 2.jpg" alt="Артем и Виктория">
+      </div>
+
+      <p class="serif" style="font-size: 22px; font-style: italic;">Дорогие гости! Ждём вас разделить с нами этот особенный день.</p>
+    </section>
+
+    <!-- Таймер -->
+    <section class="card">
+      <h2>До торжества осталось</h2>
+      <div class="timer">
+        <div class="timer-item"><span class="timer-val" id="days">0</span><span class="timer-lbl">дней</span></div>
+        <div class="timer-item"><span class="timer-val" id="hours">0</span><span class="timer-lbl">часов</span></div>
+        <div class="timer-item"><span class="timer-val" id="mins">0</span><span class="timer-lbl">минут</span></div>
+        <div class="timer-item"><span class="timer-val" id="secs">0</span><span class="timer-lbl">секунд</span></div>
+      </div>
+      <p style="margin-top: 15px; font-size: 14px; color: var(--text-muted);">3 октября 2026 года в 16:30</p>
+    </section>
+
+    <!-- Дресс-код -->
+    <section class="card">
+      <h2>Dress Code</h2>
+      <p style="font-size: 14px; color: #555;">Будем признательны, если при выборе нарядов вы придержитесь палитры нашего торжества:</p>
+      <div class="palette">
+        <div class="color-circle" style="background: #F8E1E7;" title="Розовый"></div>
+        <div class="color-circle" style="background: #F5EFEB;" title="Бежевый"></div>
+        <div class="color-circle" style="background: #FFFFFF;" title="Белый"></div>
+        <div class="color-circle" style="background: #A9C2D2;" title="Голубой"></div>
+      </div>
+    </section>
+
+    <!-- Локация -->
+    <section class="card">
+      <h2>Локация</h2>
+      <p style="font-size: 14px;"><strong>Воронежская обл., Воронеж, СНТ Расцвет, Розовая ул.</strong></p>
+      <a href="https://yandex.ru/maps/?text=Воронежская+обл.,+Воронеж,+СНТ+Расцвет,+Розовая+ул." target="_blank" class="btn-map">🗺️ Открыть карту / Маршрут</a>
+    </section>
+
+    <!-- Анкета -->
+    <section class="card">
+      <h2>Анкета гостя</h2>
+      <form id="rsvpForm">
+        
+        <div class="form-group">
+          <label>Ваше имя и фамилия (или имена гостей):</label>
+          <input type="text" id="guestName" class="form-input" placeholder="Например: Иван и Анна Ивановские" required>
+        </div>
+
+        <div class="form-group">
+          <label>Количество гостей:</label>
+          <input type="number" id="guestCount" class="form-input" value="1" min="1" max="10" required>
+        </div>
+
+        <div class="form-group">
+          <label>Предпочтения по алкоголю (можно несколько):</label>
+          <div class="chips-grid" id="alcoholChips">
+            <div class="chip" onclick="toggleChip(this)">🍾 Игристое</div>
+            <div class="chip" onclick="toggleChip(this)">🍷 Белое вино</div>
+            <div class="chip" onclick="toggleChip(this)">🍷 Красное вино</div>
+            <div class="chip" onclick="toggleChip(this)">🥃 Крепкие напитки</div>
+            <div class="chip" onclick="toggleChip(this)">🍺 Пиво</div>
+            <div class="chip" onclick="toggleChip(this)">🥤 Не употребляю</div>
+            <div class="chip" onclick="toggleChip(this)">✨ Другое</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Планируете ли остаться на ночёвку?</label>
+          <div class="radio-group" id="stayOption">
+            <div class="radio-btn" onclick="selectRadio(this, 'Да')">Да</div>
+            <div class="radio-btn" onclick="selectRadio(this, 'Нет')">Нет</div>
+            <div class="radio-btn" onclick="selectRadio(this, 'Пока не знаю')">Пока не знаю</div>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Отправить ответ</button>
+        <div id="statusMsg" class="status-msg">Спасибо! Ваш ответ успешно отправлен.</div>
+      </form>
+    </section>
+
+    <!-- Финал -->
+    <div style="text-align: center; padding: 20px 0 40px;">
+      <h2 class="serif" style="font-size: 32px; color: var(--blue-accent);">До встречи 3 октября! 💌</h2>
+    </div>
+
+  </div>
+
+  <script>
+    // Настройки Telegram
+    const BOT_TOKEN = "8720379906:AAHFymw8ga0Lque_AtVKCpOLUaGidzmqXDQ";
+    let selectedStay = "";
+
+    // Функция переключения музыки
+    function toggleMusic() {
+      const audio = document.getElementById('bgMusic');
+      const text = document.getElementById('musicText');
+      if (audio.paused) {
+        audio.play();
+        text.innerText = "Пауза";
+      } else {
+        audio.pause();
+        text.innerText = "Музыка";
+      }
+    }
+
+    // Переключение чипов алкоголя (мультивыбор)
+    function toggleChip(element) {
+      element.classList.toggle('selected');
+    }
+
+    // Выбор радио-кнопки ночёвки
+    function selectRadio(element, value) {
+      const parent = element.parentElement;
+      Array.from(parent.children).forEach(child => child.classList.remove('selected'));
+      element.classList.add('selected');
+      selectedStay = value;
+    }
+
+    // Обработка отправки формы в Telegram
+    document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('guestName').value;
+      const count = document.getElementById('guestCount').value;
+
+      // Сбор алкоголя
+      const selectedAlcohol = [];
+      document.querySelectorAll('#alcoholChips .chip.selected').forEach(chip => {
+        selectedAlcohol.push(chip.innerText);
+      });
+
+      if (!selectedStay) {
+        alert("Пожалуйста, укажите вариант по поводу ночёвки.");
+        return;
+      }
+
+      // Формирование сообщения
+      const message = `🎉 *Новый ответ на приглашение!*\n\n` +
+                      `👤 *Гость(и):* ${name}\n` +
+                      `👥 *Количество:* ${count}\n` +
+                      `🍷 *Алкоголь:* ${selectedAlcohol.length > 0 ? selectedAlcohol.join(', ') : 'Не выбрано'}\n` +
+                      `🌙 *Ночёвка:* ${selectedStay}`;
+
+      // Сначала получаем chat_id
+      try {
+        const getUpdates = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getUpdates`);
+        const data = await getUpdates.json();
+        
+        if (data.ok && data.result.length > 0) {
+          const chatId = data.result[data.result.length - 1].message.chat.id;
+
+          await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text: message,
+              parse_mode: 'Markdown'
+            })
+          });
+
+          document.getElementById('statusMsg').style.display = 'block';
+          this.reset();
+          document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+        } else {
+          alert("Бот ещё не активирован! Напишите любое сообщение вашему боту в Telegram и попробуйте снова.");
+        }
+      } catch (err) {
+        alert("Ошибка при отправке. Проверьте подключение.");
+      }
+    });
+
+    // Обратный отсчёт
+    const targetDate = new Date("October 3, 2026 16:30:00").getTime();
+
+    function updateTimer() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff > 0) {
+        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('secs').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+      }
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  </script>
+</body>
+</html>
